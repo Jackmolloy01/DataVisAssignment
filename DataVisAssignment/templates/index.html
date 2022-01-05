@@ -1,0 +1,11 @@
+{% extends 'partials/layout.html' %}
+
+{% block content %}
+    <h1> Our Landing Page</h1>
+
+    <form method="POST" action="/tweets">
+        <textarea name="query"></textarea>
+        <textarea name="query2"></textarea>
+        <button type="submit">submit</button>
+    </form>
+{% endblock %}

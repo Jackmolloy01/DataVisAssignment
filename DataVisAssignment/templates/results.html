@@ -1,0 +1,191 @@
+{% extends 'partials/layout.html' %}
+{% block content %}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <style src="{{ url_for('static', filename='style.css') }}"></style>
+
+    <figure class="highcharts-figure">
+        <h1>Results from 100 tweets</h1>
+        <param>{{ tb }}</param>
+
+        <div id = "container" style = "width: 500px; height: 300px; margin: 2% auto; float: left"></div>
+        <div id = "container2" style = "width: 500px; height: 300px; margin: 2% 20%; float: left"></div>
+        <div id = "container3" style = "width: 500px; height: 300px; margin: 0 auto; float: left"></div>
+        <div id = "container4" style = "width: 500px; height: 300px; margin: 0 20%; float: left"></div>
+    </figure>
+    <script>
+        Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Vader Sentimental Analysis on : {{ topic }}'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+             pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '125%'],
+            size: '200%'
+        }
+        },
+        series: [{
+            name: 'Vader Sentimental Analysis on : {{ topic }}',
+            colorByPoint: true,
+            innerSize: '50%',
+            data: {{ data | safe }}
+        }]
+    });
+    </script>
+    <script>
+        Highcharts.chart('container2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Vader Sentimental Analysis on : {{ topic2 }}'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+             pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '125%'],
+            size: '200%'
+        }
+        },
+        series: [{
+            name: 'Vader Sentimental Analysis on : {{ topic2 }}',
+            colorByPoint: true,
+            innerSize: '50%',
+            data: {{ data2 | safe }}
+        }]
+    });
+    </script>
+     <script>
+        Highcharts.chart('container3', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Textblob Analysis on : {{ topic }}'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+             pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '125%'],
+            size: '200%'
+        }
+        },
+        series: [{
+            name: 'Textblob Analysis on : {{ topic }}',
+            colorByPoint: true,
+            innerSize: '50%',
+            data: {{ data3 | safe }}
+        }]
+    });
+    </script>
+    <script>
+        Highcharts.chart('container4', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Textblob Analysis on : {{ topic2 }}'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+             pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '125%'],
+            size: '200%'
+        }
+        },
+        series: [{
+            name: 'Textblob Analysis on : {{ topic2 }}',
+            colorByPoint: true,
+            innerSize: '50%',
+            data: {{ data4 | safe }}
+        }]
+    });
+    </script>
+
+{% endblock %}
